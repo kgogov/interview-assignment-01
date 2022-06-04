@@ -1,0 +1,165 @@
+:root {
+  --font-family: Arial, Helvetica, sans-serif;
+  --line-height: 1.5;
+  --main-bg-image: url("../images/modis-bg.png");
+  --main-container-max-width: 500px;
+  --main-content-bg-color: #745e26b1;
+  --accent-color: #ffca75;
+  --input-text-color: #212529;
+}
+
+/* Base */
+html {
+  font-family: var(--font-family);
+  line-height: var(--line-height);
+  color: #fff;
+}
+
+a {
+  color: currentColor;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Shared */
+input,
+label {
+  display: block;
+}
+
+/* Specific */
+.wallpaper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-image: var(--main-bg-image);
+  background-position: center;
+}
+
+.content {
+  position: relative;
+  border-radius: .5rem;
+  background-color: var(--main-content-bg-color);
+  max-width: var(--main-container-max-width);
+  margin: 1rem auto 0 auto;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  text-align: center;
+  padding: 1rem;
+  cursor: default;
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--input-text-color);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, opacity .15s ease-in-out;
+}
+
+.btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 .10rem #ffca756c;
+}
+
+.btn-primary {
+  color: #000;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+
+/* Form */
+.form-container {
+  padding: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-label {
+  margin-bottom: .25rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--input-text-color);
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.form-control:focus {
+  color: var(--input-text-color);
+  background-color: #fff;
+  border-color: var(--accent-color);
+  outline: 0;
+  box-shadow: 0 0 0 .10rem #ffca756c;
+}
+
+/* Form Validation */
+.hidden {
+  display: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 34px;
+  right: 5px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.icon-success {
+  fill: green;
+}
+
+.icon-error {
+  fill: red;
+}
+
+.input-error,
+.input-error:focus {
+  border: 1px solid red;
+  box-shadow: none;
+}
+
+.error-message {
+  font-size: .85rem;
+  color: red;
+}
