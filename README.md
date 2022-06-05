@@ -21,7 +21,6 @@ To build and run this app locally you will need:
 * koa-static
 * koa-views
 * @koa-cors
-* nunjucks
 
 ## Getting started
 
