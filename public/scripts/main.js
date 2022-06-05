@@ -1,3 +1,31 @@
+const sendData = async function (form) {
+  const res = await fetch('http://127.0.0.1:3000/subscribe', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value
+    })
+  });
+
+  return res.json();
+}
+
+const handleData = function(res) {
+  if (res.errors) {
+    btn.classList.add('btn-danger');
+    btn.classList.remove('btn-success');
+    return;
+  }
+
+  btn.classList.remove('btn-danger');
+  btn.classList.add('btn-success');
+}
+
 class FormValidator {
   constructor(form, fields) {
     this.form = form;
@@ -13,6 +41,8 @@ class FormValidator {
     let self = this;
 
     this.form.addEventListener('submit', event => {
+      event.preventDefault();
+
       let isFormInvalid = false;
 
       self.fields.forEach(field => {
@@ -24,9 +54,9 @@ class FormValidator {
         }
       });
 
-      if (isFormInvalid) {
-        event.preventDefault();
-      }
+      if (isFormInvalid) { return; }
+
+      sendData(this.form).then(handleData);
     });
   }
 
@@ -93,6 +123,7 @@ class FormValidator {
 
 const form = document.querySelector('#form');
 const formFields = ['firstName', 'lastName', 'email'];
+const btn = document.querySelector('#btnSubmit');
 
 const validator = new FormValidator(form, formFields);
 validator.initialize();

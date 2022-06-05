@@ -79,14 +79,26 @@ label {
   box-shadow: 0 0 0 .10rem #ffca756c;
 }
 
+.btn:hover {
+  opacity: 0.8;
+}
+
 .btn-primary {
   color: #000;
   background-color: var(--accent-color);
   border-color: var(--accent-color);
 }
 
-.btn:hover {
-  opacity: 0.8;
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 

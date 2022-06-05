@@ -15,10 +15,11 @@
   <main class="content">
     <h1 class="page-title">Subscribe to our newsletter! 👋</h1>
     <div class="form-container">
-      <form id="form" action="/" novalidate>
+      <form id="form" action="/subscribe" method="post" novalidate>
         <div class="form-group">
           <label for="firstName" class="form-label">First name</label>
-          <input id="firstName" name="firstName" type="text" class="form-control" placeholder="eg: John" data-is-valid="false">
+          <input id="firstName" name="firstName" type="text" class="form-control" placeholder="eg: John"
+            data-is-valid="false">
 
           <span class="error-message"></span>
           <svg class="icon icon-success hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -37,7 +38,8 @@
         </div>
         <div class="form-group">
           <label for="lastName" class="form-label">Last name</label>
-          <input id="lastName" name="lastName" type="text" class="form-control" placeholder="eg: Doe" data-is-valid="false">
+          <input id="lastName" name="lastName" type="text" class="form-control" placeholder="eg: Doe"
+            data-is-valid="false">
 
           <span class="error-message"></span>
           <svg class="icon icon-success hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -55,7 +57,8 @@
         </div>
         <div class="form-group">
           <label for="email" class="form-label">Email address</label>
-          <input id="email" name="email" type="email" class="form-control" placeholder="eg: johndoe@hey.com" data-is-valid="false">
+          <input id="email" name="email" type="email" class="form-control" placeholder="eg: johndoe@hey.com"
+            data-is-valid="false">
 
           <span class="error-message"></span>
           <svg class="icon icon-success hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -72,11 +75,10 @@
               clip-rule="evenodd" />
           </svg>
         </div>
-        <button type="submit" class="btn btn-primary">Subscribe</button>
+        <button id="btnSubmit" type="submit" class="btn btn-primary">Subscribe</button>
       </form>
     </div>
   </main>
-
   <script src="./scripts/main.js"></script>
 </body>
 

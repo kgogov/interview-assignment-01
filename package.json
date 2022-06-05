@@ -1,0 +1,29 @@
+{
+  "name": "koa-app",
+  "version": "1.0.0",
+  "description": "Modis interview task",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kgogov/modis-task.git"
+  },
+  "author": "Konstantin Gogov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kgogov/modis-task/issues"
+  },
+  "homepage": "https://github.com/kgogov/modis-task#readme",
+  "dependencies": {
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
