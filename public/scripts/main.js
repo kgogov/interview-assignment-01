@@ -1,5 +1,7 @@
-const sendData = async function (form) {
-  const res = await fetch('http://127.0.0.1:3000/subscribe', {
+const serverFormDataValidator = async function (form) {
+  const END_POINT = 'http://localhost:3000/validate';
+
+  const res = await fetch(END_POINT, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -12,19 +14,21 @@ const sendData = async function (form) {
     })
   });
 
-  return res.json();
+  const data = await res.json();
+  return data;
 }
 
-const handleData = function(res) {
+const setButtonStyleDanger = function () {
+  btn.classList.add('btn-danger');
+};
+
+const handleResponse = function (res, form) {
   if (res.errors) {
-    btn.classList.add('btn-danger');
-    btn.classList.remove('btn-success');
-    return;
+    return setButtonStyleDanger();
   }
 
-  btn.classList.remove('btn-danger');
-  btn.classList.add('btn-success');
-}
+  form.submit();
+};
 
 class FormValidator {
   constructor(form, fields) {
@@ -54,9 +58,8 @@ class FormValidator {
         }
       });
 
-      if (isFormInvalid) { return; }
-
-      sendData(this.form).then(handleData);
+      if (isFormInvalid) return;
+      serverFormDataValidator(this.form).then(res => handleResponse(res, this.form));
     });
   }
 

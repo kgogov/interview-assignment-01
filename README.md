@@ -2,10 +2,11 @@
 
 ### Available endpoints
 
-| method | resource     | description      |
-| :----- | :----------- | :--------------- |
-| `GET`  | `/`          | Index page       |
-| `POST` | `/subscribe` | Submit form data |
+| method | resource     | description        |
+| :----- | :----------- | :----------------- |
+| `GET`  | `/`          | Index page         |
+| `POST` | `/subscribe` | Submit form data   |
+| `POST` | `/validate`  | Validate form data |
 
 
 ## Pre-reqs
@@ -19,6 +20,8 @@ To build and run this app locally you will need:
 * koa-router
 * koa-static
 * koa-views
+* @koa-cors
+* nunjucks
 
 ## Getting started
 

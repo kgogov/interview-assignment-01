@@ -3,6 +3,8 @@ const KoaRouter = require('koa-router');
 const KoaStatic = require('koa-static');
 const KoaBodyParser = require('koa-bodyparser');
 const views = require('koa-views');
+const cors = require('@koa/cors');
+const nunjucks = require('nunjucks');
 
 const app = new Koa();
 const router = new KoaRouter();
@@ -15,26 +17,24 @@ app.context.error = function (code, obj) {
   this.body = obj;
 };
 
-app.use(KoaBodyParser({
-  enableTypes: ['json', 'form'],
-  multipart: true,
-  formidable: {
-    maxFileSize: 32 * 1024 * 1024,
-  }
-}));
+app.use(cors());
+app.use(KoaBodyParser());
 
-app.use(views('./views'));
-app.use(KoaStatic('./public'));
+nunjucks.configure('views', { autoescape: true });
+app.use(views('./views', { map: { html: 'nunjucks' } }));
 
-app.use(router.routes());
-app.use(router.allowedMethods());
-
-// End points
-router.get('/', async ctx => {
-  return await ctx.render('./index.html');
+// *****************************
+// End points middleware
+// *****************************
+router.get('/', async (ctx, next) => {
+  return await ctx.render('./index');
 });
 
-router.post('/subscribe', async ctx => {
+router.post('/subscribe', async (ctx, next) => {
+  return await ctx.render('./index', { btnSuccessStyle: 'btn-success' });
+});
+
+router.post('/validate', async (ctx, next) => {
   const data = ctx.request.body;
   const errors = {};
 
@@ -53,7 +53,15 @@ router.post('/subscribe', async ctx => {
   ctx.body = {
     status: 200,
     success: true
-  }
+  };
 });
+
+// *****************************
+// Middleware
+// *****************************
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+app.use(KoaStatic('./public'));
 
 app.listen(PORT, 'localhost', () => console.log(`Listening on port: ${PORT}`));
